@@ -86,6 +86,7 @@ public class Main {
                 System.out.println("\nLista de Produtos:\n");
 
                 for (Produto produto : produtos) {
+                    System.out.println("ID: " + produto.id());
                     System.out.println("Nome: " + produto.nome());
                     System.out.println("Quantidade: " + produto.quantidade());
                     System.out.println("Valor: R$ " + produto.valor());
@@ -108,7 +109,8 @@ public class Main {
         try {
             Produto produto = produtoDAO.buscarPorID(id);
             if (produto!=null) {
-                System.out.println("\nProduto encontrado.");
+                System.out.println("\nProduto encontrado: ");
+                System.out.println("ID: " + produto.id());
                 System.out.println("Nome: " + produto.nome());
                 System.out.println("Quantidade: " + produto.quantidade());
                 System.out.println("Valor: R$ " + produto.valor());
@@ -158,7 +160,7 @@ public class Main {
     private static void excluirProduto(){
         System.out.println("\n###Excluir Produto###");
 
-        System.out.print("Digite o ID do produto a ser excluído: ");
+        System.out.print("\nDigite o ID do produto a ser excluído: ");
         Long id = Long.parseLong(console.readLine());
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -168,7 +170,7 @@ public class Main {
             if (produtoExistente != null) {
                 try {
                     produtoDAO.excluir(produtoExistente.id());
-                    System.out.println("Produto excluído com sucesso!");
+                    System.out.println("\nProduto excluído com sucesso!");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
